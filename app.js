@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -9,10 +10,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // connnection
-mongoose.connect("mongodb://localhost:27017/itemsDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
+mongoose.connect("mongodb+srv://anjaliDB:"+process.env.PASSWORD+"@cluster0.vrccx.mongodb.net/taskmanagerDB",{useNewUrlParser:true, useUnifiedTopology:true})
 
 //  schema
 const itemSchema = new mongoose.Schema({
